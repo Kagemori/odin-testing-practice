@@ -1,4 +1,4 @@
-import { capitalize, reverseString, Calculator } from "./functions.js";
+import { capitalize, reverseString, Calculator, caesarCipher } from "./functions.js";
 
 test('capitalize first character', () => {
     expect(capitalize('flutteronderpy')).toBe('Flutteronderpy');
@@ -24,4 +24,9 @@ test('calculator operations', () => {
 
     let object3 = new Calculator(23124,"789turtle");
     expect(object3.multiply()).toBe("789turtle is not a number!");
+});
+
+test('caesar cipher', () => {
+    expect(caesarCipher('flutteronderpy',3)).toBe('ioxwwhurqghusb');
+    expect(caesarCipher(`Honey, you're cute!`,44)).toBe(`Zgfwq, qgm'jw umlw!`);
 });

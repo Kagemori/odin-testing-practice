@@ -63,4 +63,37 @@ class Calculator {
     }
 }
 
-export {capitalize, reverseString, Calculator}
+function characterShift(character, shiftFactor){
+    let characterCode = character.charCodeAt(0);
+
+    if(character.charCodeAt(0) > 96 && character.charCodeAt(0) < 123){
+        characterCode += shiftFactor;
+        while(characterCode > 122){
+            characterCode = characterCode - 122;
+            characterCode += 96;
+        }
+    }else if(character.charCodeAt(0) > 64 && character.charCodeAt(0) < 91){
+        characterCode += shiftFactor;
+        while(characterCode > 90){
+            characterCode = characterCode - 90;
+            characterCode += 64;
+        }
+    }
+
+    return String.fromCharCode(characterCode);
+}
+
+function caesarCipher(stringInput, shiftFactor){
+    let toCipher = stringInput.split("");
+    let cipheredString = "";
+
+    toCipher.forEach(element => {
+        element = characterShift(element,shiftFactor);
+        cipheredString += element;
+    });
+    
+    return cipheredString;
+}
+
+
+export {capitalize, reverseString, Calculator, caesarCipher}
