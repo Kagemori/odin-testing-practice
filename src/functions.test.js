@@ -1,4 +1,4 @@
-import { capitalize, reverseString, Calculator, caesarCipher } from "./functions.js";
+import { capitalize, reverseString, Calculator, caesarCipher, analyzeArray } from "./functions.js";
 
 test('capitalize first character', () => {
     expect(capitalize('flutteronderpy')).toBe('Flutteronderpy');
@@ -30,3 +30,9 @@ test('caesar cipher', () => {
     expect(caesarCipher('flutteronderpy',3)).toBe('ioxwwhurqghusb');
     expect(caesarCipher(`Honey, you're cute!`,44)).toBe(`Zgfwq, qgm'jw umlw!`);
 });
+
+test('analyzing array', () => {
+    expect(analyzeArray([1,8,3,4,2,6])).toBe(`{"average":4,"min":1,"max":8,"length":6}`);
+    expect(analyzeArray([1,"elephant",3,4,"turtle",6])).toBe(`Array contains an element that's not a number!`);
+    expect(analyzeArray({"turtle":5,"monkey":5345})).toBe("Given input is not an array!");
+})

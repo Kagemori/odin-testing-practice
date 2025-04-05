@@ -95,5 +95,44 @@ function caesarCipher(stringInput, shiftFactor){
     return cipheredString;
 }
 
+function analyzeArray(array){
+    if(array instanceof Array){
+        let check;
+        array.forEach(element => {
+            if(typeof(element) !== 'number'){
+                check = "Array contains an element that's not a number!"
+            }
+        });
 
-export {capitalize, reverseString, Calculator, caesarCipher}
+        if(check !== undefined){
+            return check;
+        }
+
+        let average = 0;
+
+        for(let i=0;i<array.length;i++){
+            average = average + array[i];
+        }
+        average = average / array.length;
+
+        let min = array[0];
+        let max = array[0];
+        array.forEach(element => {
+            if(element < min){
+                min = element;
+            }else if(element > max){
+                max = element;
+            }
+        });
+
+        let length = array.length;
+
+        let object = {average,min,max,length};
+        let serialized = JSON.stringify(object)
+        return serialized;
+    }else{
+        return "Given input is not an array!";
+    }
+}
+
+export {capitalize, reverseString, Calculator, caesarCipher,analyzeArray}
